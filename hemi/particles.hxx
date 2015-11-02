@@ -22,12 +22,14 @@ Particles(const Parameters<T>& parameters_,
 
 }
 
-void ApplyGravity() {
+void ApplyGravity(hemi::Location loc) {
   const T g = parameters.GetGravity();
   const T dt = parameters.GetDT();
 
+  auto *const v_local = v.ptr(loc);
+
   hemi::parallel_for(0, local_count, [=] HEMI_LAMBDA (int i) {
-      v.ptr(hemi::host)[i].y += g*dt;
+      v_local[i].y += g*dt;
   });
 
 }
