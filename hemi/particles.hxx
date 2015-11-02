@@ -22,7 +22,7 @@ Particles(const Parameters<T>& parameters_,
 
 }
 
-void ApplyGravity(hemi::Location loc) {
+void ApplyGravity(hemi::Location loc = hemi::host) {
   const T g = parameters.GetGravity();
   const T dt = parameters.GetDT();
 
